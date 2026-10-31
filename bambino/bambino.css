@@ -1,0 +1,3 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1,h2,h3{letter-spacing:-.035em;font-weight:800}.btn{border-radius:999px}.card__media{border-radius:var(--r-lg)}

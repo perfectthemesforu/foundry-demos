@@ -1,0 +1,175 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atlas — gear Shopify theme preview</title>
+<style>
+@font-face{font-family:"Inter Display";font-weight:800;src:url(../fonts/InterDisplay-ExtraBold.otf) format("opentype")}
+@font-face{font-family:"Inter";font-weight:400;src:url(../fonts/Inter-Regular.otf) format("opentype")}@font-face{font-family:"Inter";font-weight:500;src:url(../fonts/Inter-Medium.otf) format("opentype")}@font-face{font-family:"Inter";font-weight:600;src:url(../fonts/Inter-SemiBold.otf) format("opentype")}@font-face{font-family:"Inter";font-weight:700;src:url(../fonts/Inter-Bold.otf) format("opentype")}
+</style>
+<link rel="stylesheet" href="atlas.css"><link rel="stylesheet" href="extras.css">
+<style>
+.ph{width:100%;height:100%;display:grid;place-items:center;color:rgba(30,38,30,.35);font-family:var(--d);font-weight:800;background:linear-gradient(160deg,#D6CFBE,#BFB6A1)}
+.switch{position:fixed;left:1rem;bottom:1rem;z-index:70;display:flex;gap:.3rem;background:var(--olive);padding:.35rem;border-radius:999px;box-shadow:0 10px 40px -10px rgba(0,0,0,.5)}
+.switch a{padding:.5rem .9rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:.85rem;color:#E9E4D8}.switch a.on{background:#FF5A1F;color:#fff}
+[data-view]{display:none}[data-view].on{display:block}
+</style></head>
+<body>
+<script>
+const _cart={items:[],item_count:0,total_price:0};
+window.theme={moneyFormat:'${{amount}}',routes:{cart_url:'/cart',cart_add_url:'/cart/add',cart_change_url:'/cart/change'},strings:{addToCart:'Add to cart',soldOut:'Sold out',save:'Save {{ pct }}%',remove:'Remove'}};
+const _f=window.fetch;window.fetch=async(u,o)=>{const j=(d)=>new Response(JSON.stringify(d),{status:200,headers:{'Content-Type':'application/json'}});
+ if(u.startsWith('/cart/add')){const b=JSON.parse(o.body);b.items.forEach(it=>{const ex=_cart.items.find(x=>x.id===it.id);if(ex)ex.quantity+=it.quantity;else _cart.items.push({id:it.id,key:'k'+it.id,quantity:it.quantity,product_title:it.id===9?'Spare lid seal':it.id===8?'Sip lid':'The Flask 750',variant_title:it.id<5?'Moss':'',url:'#product',image:'',price:it.id===9?600:it.id===8?1200:3900})});recalc();return j(_cart)}
+ if(u.startsWith('/cart/change')){const b=JSON.parse(o.body);const it=_cart.items.find(x=>x.key===b.id);if(it){it.quantity=b.quantity;if(!b.quantity)_cart.items.splice(_cart.items.indexOf(it),1)}recalc();return j(_cart)}
+ if(u.startsWith('/cart'))return j(_cart);return _f(u,o)};
+function recalc(){_cart.item_count=_cart.items.reduce((a,b)=>a+b.quantity,0);_cart.items.forEach(i=>i.final_line_price=i.price*i.quantity);_cart.total_price=_cart.items.reduce((a,b)=>a+b.final_line_price,0)}
+</script>
+<div class="ticker"><div class="ticker__track"><span><span>Free shipping over $50</span><i>▲</i><span>Lifetime warranty</span><i>▲</i><span>Ships in 24h</span><i>▲</i></span><span aria-hidden="true"><span>Free shipping over $50</span><i>▲</i><span>Lifetime warranty</span><i>▲</i><span>Ships in 24h</span><i>▲</i></span></div></div>
+<header class="hdr"><div class="wrap hdr__in">
+  <a class="logo" href="#home"><i></i>Atlas</a>
+  <nav class="nav"><a href="#product" aria-current="page">Shop</a><a href="#home">Tests</a><a href="#home">Warranty</a><a href="#home">Journal</a></nav>
+  <div class="hdr__acts"><button class="icon-btn menu-btn" type="button" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><a class="icon-btn" href="#" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a><a class="icon-btn" href="#" data-cart-open aria-label="Cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9H7.5L6 6Zm0 0L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span class="cart-count" data-count="0">0</span></a></div>
+</div></header>
+<main id="MainContent">
+<div data-view="home" class="on">
+<section class="hero"><div class="hero__grid"></div><div class="wrap hero__in">
+  <div><h1><span class="ln"><span>Cold for</span></span><span class="ln"><span>24 hours.</span></span><span class="ln"><span>Anywhere.</span></span></h1>
+    <p class="hero__sub">Double-wall steel, a lid that actually seals, and a coating that survives being dropped. Built for the day, not the shelf.</p>
+    <div class="hero__ctas"><a class="btn btn--lg btn--orange" href="#product"><span>Shop the Flask — $39</span></a><a class="btn btn--lg btn--line" href="#home"><span>See the tests</span></a></div>
+    <div class="hero__chips"><span>24 h cold</span><span>12 h hot</span><span>750 ml</span><span>Dishwasher safe</span></div></div>
+  <div class="hero__stage"><div class="hero__tag">Lifetime warranty<small>on the body and lid</small></div><div class="hero__shadow"></div><canvas class="hero__3d" data-bottle data-shape="flask" data-brand="Atlas" data-sub="750 ml · 24 h cold" data-glass="#4C5A45" data-cap="#1E261E" data-text="#E9E4D8" data-bg="#E9E4D8" data-scale="0.9" role="img" aria-label="3D flask, drag to rotate"></canvas><span class="hero__hint">Drag to turn it</span><div class="hero__img"><img src="img/flask.webp" alt="" width="800" height="1000"></div></div>
+</div></section>
+<section class="block--half"><div class="wrap"><div class="specs">
+  <div class="spec"><b data-count="24">0</b><b class="unit">h</b><span>ice-cold, lid closed, 22°C room</span></div>
+  <div class="spec"><b data-count="12">0</b><b class="unit">h</b><span>hot, tested with boiling water</span></div>
+  <div class="spec"><b data-count="750">0</b><b class="unit">ml</b><span>capacity, fits most cup holders</span></div>
+  <div class="spec"><b data-count="1.8">0</b><b class="unit">m</b><span>drop test onto concrete, no leak</span></div>
+</div></div></section>
+<section class="block--half"><div class="wrap"><div class="trustrow">
+  <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></i><div><b>Free shipping over $50</b><span>UK &amp; US, tracked</span></div></div>
+  <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></i><div><b>Lifetime warranty</b><span>Body and lid</span></div></div>
+  <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18"/></svg></i><div><b>Bundle &amp; save</b><span>Two flasks, 15% off</span></div></div>
+  <div><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9H7.5L6 6Zm0 0L5 3H2"/></svg></i><div><b>Secure checkout</b><span>Apple Pay, PayPal, cards</span></div></div>
+</div></div></section>
+<section class="block"><div class="wrap">
+  <div class="section-head reveal"><h2>One bottle, every day</h2><p class="lede">Pick the day. The bottle keeps up.</p></div>
+  <div class="uses" data-uses>
+    <div class="uses__tabs" role="tablist">
+      <button class="uses__tab" type="button" role="tab" aria-selected="true" data-caption="Day 2, 31°C"><span><b>Trail</b><span>Clips to a pack, survives the drop.</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+      <button class="uses__tab" type="button" role="tab" aria-selected="false" data-caption="Leg day"><span><b>Gym</b><span>Ice at 6am is still ice at 7pm.</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+      <button class="uses__tab" type="button" role="tab" aria-selected="false" data-caption="Tuesday"><span><b>Desk</b><span>No sweat ring on the notebook.</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+      <button class="uses__tab" type="button" role="tab" aria-selected="false" data-caption="Row 14"><span><b>Travel</b><span>Leak-proof in a bag, fits the seat pocket.</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+    </div>
+    <div class="uses__fig"><img src="img/use-trail.jpg" alt="Trail"><img src="img/use-gym.jpg" alt="Gym"><img src="img/use-desk.jpg" alt="Desk"><img src="img/use-travel.jpg" alt="Travel"><span class="uses__cap" data-uses-cap>Day 2, 31°C</span></div>
+  </div>
+</div></section>
+<section class="block"><div class="wrap split">
+  <div class="split__media"><img src="img/flask-3.jpg" alt="Lid seal detail"></div>
+  <div><h2 class="reveal">Built like a tool, not a cup</h2><div class="lede"><p>18/8 steel, vacuum-sealed, powder-coated. The lid has one seal and one job.</p></div>
+    <ul class="split__list"><li><span>Weight (empty)</span><span>390 g</span></li><li><span>Steel</span><span>18/8 food-grade</span></li><li><span>Mouth</span><span>Wide, fits ice</span></li><li><span>Warranty</span><span>Lifetime</span></li></ul></div>
+</div></section>
+<section class="block block--olive"><div class="wrap">
+  <div class="section-head reveal"><h2>We broke a few so you don't have to</h2><p class="lede">Numbers from our own bench tests. Replace with yours — don't publish numbers you haven't measured.</p></div>
+  <div class="tests"><div class="test"><b data-count="1.8" data-suffix=" m">0</b><span>drop onto concrete, 10 times, no leak</span></div><div class="test"><b data-count="500">0</b><span>dishwasher cycles, coating intact</span></div><div class="test"><b data-count="-18" data-suffix="°C">0</b><span>freezer overnight, seal still seals</span></div></div>
+  <p class="small muted" style="margin-top:1rem">Tested at 22°C ambient, lid closed. Your results depend on conditions.</p>
+</div></section>
+<section class="block--half"><div class="wrap">
+  <div class="section-head reveal"><h2>In the box</h2><p class="lede">Everything you need. Nothing you'll throw away.</p></div>
+  <div class="box"><div><i>01</i><b>The Flask, 750 ml</b><span>Powder-coated steel body.</span></div><div><i>02</i><b>Sealed lid</b><span>One silicone seal, replaceable.</span></div><div><i>03</i><b>Sip lid</b><span>For the desk days.</span></div><div><i>04</i><b>Brush</b><span>Reaches the bottom.</span></div></div>
+</div></section>
+<section class="block"><div class="wrap">
+  <div class="section-head reveal"><h2>The kit</h2><p><a class="btn btn--line" href="#product"><span>View all</span></a></p></div>
+  <div class="grid">
+    <a class="card" href="#product"><div class="card__media"><img src="img/flask-1.jpg" alt="The Flask 750"><img src="img/flask-2.jpg" alt=""><span class="card__badge">New</span><div class="qa"><button class="x-btn" type="button" data-quick-add="1" data-label="Quick add" data-done="Added">Quick add</button></div></div><div class="card__row"><span class="card__title">The Flask 750</span><span class="card__price">$39.00</span></div></a>
+    <a class="card" href="#product"><div class="card__media"><img src="img/flask-4.jpg" alt="Two flasks"><span class="card__badge">Set</span><div class="qa"><button class="x-btn" type="button" data-quick-add="2" data-label="Quick add" data-done="Added">Quick add</button></div></div><div class="card__row"><span class="card__title">The Pair</span><span class="card__price">$66.00<s>$78.00</s></span></div></a>
+    <a class="card" href="#product"><div class="card__media"><img src="img/flask-3.jpg" alt="Spare seals"><div class="qa"><button class="x-btn" type="button" data-quick-add="9" data-label="Quick add" data-done="Added">Quick add</button></div></div><div class="card__row"><span class="card__title">Spare seals ×3</span><span class="card__price">$6.00</span></div></a>
+  </div>
+</div></section>
+<section class="block block--half"><div class="wrap">
+  <div class="section-head reveal"><h2>Versus the usual suspects</h2><p class="lede">Honest comparison. Only claim what you can show.</p></div>
+  <div style="overflow-x:auto"><table class="cmpt"><thead><tr><th></th><th class="us">The Flask</th><th>Plastic sports bottle</th><th>Big-brand steel</th></tr></thead><tbody><tr><td>Price</td><td class="us">$39</td><td>$12</td><td>$45–60</td></tr><tr><td>Ice after 24 h</td><td class="us">Yes</td><td>No</td><td>Yes</td></tr><tr><td>Leak-proof in a bag</td><td class="us">Yes</td><td>Rarely</td><td>Yes</td></tr><tr><td>Warranty</td><td class="us">Lifetime</td><td>None</td><td>Limited lifetime</td></tr><tr><td>Fits cup holder</td><td class="us">750 ml: yes</td><td>Yes</td><td>Varies</td></tr></tbody></table></div>
+</div></section>
+<section class="block" id="reviews"><div class="wrap">
+  <div class="section-head reveal"><h2>What owners say</h2><p class="lede">Every review from a verified order, collected by email after delivery.</p></div>
+  <div class="rv"><aside class="rv__sum"><div class="rv__big">4.8</div><div class="rv__stars">★★★★★</div><div class="rv__count">Based on 0 reviews — this is how it will look once your reviews app is live</div><div class="rv__bars"><div class="rv__bar"><span>5 ★</span><i style="--w:82%"></i><span>82%</span></div><div class="rv__bar"><span>4 ★</span><i style="--w:12%"></i><span>12%</span></div><div class="rv__bar"><span>3 ★</span><i style="--w:4%"></i><span>4%</span></div><div class="rv__bar"><span>2 ★</span><i style="--w:1%"></i><span>1%</span></div><div class="rv__bar"><span>1 ★</span><i style="--w:1%"></i><span>1%</span></div></div><div class="rv__chips"><span>Ice retention</span><span>Lid</span><span>Gym</span><span>Hiking</span></div><p class="small muted" style="margin:1.25rem 0 0">Sample layout. Cards marked "Sample" are placeholders, not customer reviews.</p></aside>
+    <div class="rv__list">
+      <article class="rvc"><span class="rvc__sample">Sample</span><div class="rvc__head"><b>Example name</b><span class="rvc__ver">Verified buyer</span><span>Leeds · Hikes weekends</span></div><div><div class="rvc__stars">★★★★★</div><h4>Still had ice at the car</h4><p>This is where a real customer's words go. Judge.me or Loox pulls them in automatically after delivery, with their photo if they add one.</p></div><img class="rvc__img" src="img/flask-2.jpg" alt=""><div class="rvc__meta"><span>2 weeks ago</span><span>The Flask · Moss</span></div></article>
+      <article class="rvc"><span class="rvc__sample">Sample</span><div class="rvc__head"><b>Example name</b><span class="rvc__ver">Verified buyer</span><span>Denver, CO</span></div><div><div class="rvc__stars">★★★★</div><h4>Great bottle, lid takes a few turns</h4><p>A four-star card. Keep these — a page of only five-star reviews reads as fake, and a mix is what the FTC and ASA expect.</p></div><div class="rvc__meta"><span>1 month ago</span><span>The Flask · Slate</span></div></article>
+      <a class="btn btn--line rv__more" href="#reviews"><span>Read all reviews</span></a></div></div>
+</div></section>
+<section class="block"><div class="wrap">
+  <div class="section-head reveal"><h2>In the wild</h2><p class="lede">Tag us to be featured. Only use photos you have permission to post.</p></div>
+  <div class="ugc"><a href="#" data-lightbox="img/use-trail.jpg" data-caption="@example"><img src="img/use-trail.jpg" alt=""><span class="ugc__tag">@example</span></a><a href="#" data-lightbox="img/flask-2.jpg"><img src="img/flask-2.jpg" alt=""></a><a href="#" data-lightbox="img/use-gym.jpg"><img src="img/use-gym.jpg" alt=""></a><a href="#" data-lightbox="img/use-desk.jpg"><img src="img/use-desk.jpg" alt=""></a><a href="#" data-lightbox="img/use-travel.jpg"><img src="img/use-travel.jpg" alt=""></a><a href="#" data-lightbox="img/flask-1.jpg"><img src="img/flask-1.jpg" alt=""></a><a href="#" data-lightbox="img/flask-4.jpg"><img src="img/flask-4.jpg" alt=""></a></div>
+</div></section>
+<section class="block"><div class="wrap faq">
+  <div><h2 class="reveal">Questions</h2><p class="lede">Anything else — email us. A person who owns one replies within a day.</p></div>
+  <div class="acc"><details open><summary>Does it really keep ice for 24 hours?</summary><div class="acc__body">Filled with ice and lid closed at 22°C, yes — we test every batch. In a hot car, expect less.</div></details><details><summary>Will it fit a cup holder?</summary><div class="acc__body">The 750 ml fits standard car cup holders; the 1 L does not.</div></details><details><summary>What does the warranty cover?</summary><div class="acc__body">Vacuum failure, lid failure, coating peeling. Dents and scratches are normal wear.</div></details><details><summary>Returns?</summary><div class="acc__body">30 days, used or not.</div></details></div>
+</div></section>
+<section class="fin"><div class="wrap"><h2>Lifetime warranty. No forms.</h2><p class="lede" style="text-align:center;color:rgba(255,255,255,.85)">If it fails, we replace it. Dents are yours to keep.</p><a class="btn btn--lg" style="margin-top:1.5rem" href="#product"><span>Shop the Flask</span></a></div></section>
+</div>
+
+<div data-view="product">
+<section class="wrap pdp">
+  <div class="gal"><div class="gal__main"><img src="img/flask-1.jpg" alt="The Flask 750" width="900" height="1125"></div><div class="gal__thumbs"><button type="button" aria-current="true" data-src="img/flask-1.jpg"><img src="img/flask-1.jpg" alt=""></button><button type="button" data-src="img/flask-2.jpg"><img src="img/flask-2.jpg" alt=""></button><button type="button" data-src="img/flask-3.jpg"><img src="img/flask-3.jpg" alt=""></button><button type="button" data-src="img/flask-4.jpg"><img src="img/flask-4.jpg" alt=""></button></div></div>
+  <div class="buy">
+    <p class="buy__kicker">Insulated flask · 750 ml</p><h1>The Flask 750</h1><p class="buy__sub">Cold for a day. Hot for a shift. Yours for life.</p>
+    <div class="rating-slot"><span style="color:var(--orange);letter-spacing:.1em;font-size:.8rem">★★★★★</span> <span class="small muted">Reviews app block goes here</span></div>
+    <div class="price"><span class="price__now" data-price-now>$39.00</span><s class="price__was" data-price-was hidden></s><span class="price__save" data-price-save hidden></span></div>
+    <form data-product-form data-variants><input type="hidden" name="id" value="1">
+      <script type="application/json" data-variants-json>[{"id":1,"price":3900,"available":true,"options":["Moss","750 ml"],"featured_image":null},{"id":2,"price":3900,"available":true,"options":["Slate","750 ml"],"featured_image":null},{"id":3,"price":3900,"available":true,"options":["Sand","750 ml"],"featured_image":null},{"id":4,"price":4500,"available":true,"options":["Moss","1 L"],"featured_image":null},{"id":5,"price":4500,"available":false,"options":["Slate","1 L"],"featured_image":null},{"id":6,"price":4500,"available":true,"options":["Sand","1 L"],"featured_image":null}]</script>
+      <fieldset class="swatches"><legend>Colour <span data-sel-label="0"></span></legend><div class="swatches__row"><label class="sw" title="Moss"><input type="radio" name="option-0" data-option="0" value="Moss" checked><i style="--c:#4C5A45"></i></label><label class="sw" title="Slate"><input type="radio" name="option-0" data-option="0" value="Slate"><i style="--c:#4A4E57"></i></label><label class="sw" title="Sand"><input type="radio" name="option-0" data-option="0" value="Sand"><i style="--c:#CFC4A8"></i></label></div></fieldset>
+      <fieldset class="swatches"><legend>Size <span data-sel-label="1"></span></legend><div class="opts"><label class="opt"><input type="radio" name="option-1" data-option="1" value="750 ml" checked>750 ml</label><label class="opt"><input type="radio" name="option-1" data-option="1" value="1 L">1 L</label></div></fieldset>
+      <fieldset class="tiers"><legend>Choose your bundle</legend>
+        <label class="tier"><input type="radio" name="offer" data-qty="1" data-price="3900" data-each="3900" data-discount="0" data-label="One flask" checked><span class="tier__dot"></span><span><span class="tier__t">One flask</span><span class="tier__s">Lid, sip lid, brush included</span></span><span class="tier__p"><span data-tier-total>$39.00</span></span></label>
+        <label class="tier"><input type="radio" name="offer" data-qty="2" data-price="3900" data-each="3315" data-discount="15" data-label="Two flasks"><span class="tier__dot"></span><span><span class="tier__t">Two flasks</span><span class="tier__s">One for the car, one for the desk</span></span><span class="tier__p"><span data-tier-total>$66.30</span><small>15% off each</small></span><span class="tier__tag">Save 15%</span></label>
+      </fieldset>
+      <button class="btn btn--orange btn--lg btn--block" type="submit" data-atc><span data-atc-label>Add to cart</span></button>
+      <p class="form-error" role="alert"></p>
+    </form>
+    <button class="linkish" type="button" data-modal-open="#SizeChart" style="margin:.5rem 0 1rem">Size guide</button>
+    <div class="xmodal" id="SizeChart"><div class="xmodal__scrim" data-modal-close></div><div class="xmodal__card" role="dialog"><h3 style="margin-top:0">Size guide</h3><table><tr><th>Size</th><th>Height</th><th>Width</th><th>Cup holder</th></tr><tr><td>750 ml</td><td>26 cm</td><td>7.5 cm</td><td>Yes</td></tr><tr><td>1 L</td><td>30 cm</td><td>8.6 cm</td><td>No</td></tr></table><button class="xmodal__x" type="button" data-modal-close aria-label="Close">✕</button></div></div>
+    <p class="ship">Order today, arrives Nov 1 – Nov 5</p>
+    <ul class="trust"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>Free shipping over $50, UK &amp; US</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>30-day returns, used or not</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18"/></svg>Lifetime warranty on body and lid</li></ul>
+    <div class="pdp__desc rte"><p>Double-wall vacuum steel with a powder coat that doesn't chip on the first drop. Wide mouth for ice, a lid with one replaceable seal, and a sip lid for the desk. Fits a car cup holder.</p><p class="small">Sample product content — replace with the supplier's spec sheet.</p></div>
+    <div style="margin-top:1.5rem"><h3 style="font-size:1.2rem">Specifications</h3><table class="spectable"><tr><td>Capacity</td><td>750 ml</td></tr><tr><td>Weight</td><td>390 g</td></tr><tr><td>Cold</td><td>24 h</td></tr><tr><td>Hot</td><td>12 h</td></tr><tr><td>Mouth</td><td>54 mm, fits ice</td></tr><tr><td>Dishwasher</td><td>Yes</td></tr></table></div>
+    <div class="acc" style="margin-top:1.5rem"><details><summary>Care</summary><div class="acc__body">Dishwasher safe. Hand-wash the lid seal. Don't microwave.</div></details><details><summary>Warranty</summary><div class="acc__body">Lifetime on the body and lid. Email a photo, we ship a replacement.</div></details></div>
+  </div>
+</section>
+<div class="sticky"><div class="wrap sticky__in"><span class="sticky__t">The Flask 750</span><button class="btn" type="button" data-sticky-atc><span>Add to cart — <span data-price-now>$39.00</span></span></button></div></div>
+<section class="block"><div class="wrap">
+  <div class="section-head reveal"><h2>Complete the set</h2><p class="lede">Add two or more and the set discount applies at checkout.</p></div>
+  <div class="bt" data-bt data-discount="10">
+    <div class="bt__items">
+      <label class="bt__item"><input type="checkbox" value="1" data-price="3900" checked><img src="img/flask-1.jpg" alt=""><span><b>The Flask 750</b><span>This item</span></span><span>$39.00</span></label>
+      <label class="bt__item"><input type="checkbox" value="8" data-price="1200" checked><img src="img/flask-3.jpg" alt=""><span><b>Sip lid</b><span>For the desk days</span></span><span>$12.00</span></label>
+      <label class="bt__item"><input type="checkbox" value="9" data-price="600"><img src="img/flask-2.jpg" alt=""><span><b>Spare seals ×3</b><span>A year of seals</span></span><span>$6.00</span></label>
+    </div>
+    <div class="bt__sum"><div class="bt__total"><span>Total</span><b data-bt-total></b></div><span class="bt__save" data-bt-save hidden></span><button class="x-btn x-btn--accent x-btn--block" type="button" data-bt-add>Add selected to cart</button><p class="small muted" style="margin:0">Set discount applied at checkout.</p></div>
+  </div>
+</div></section>
+<section class="block block--olive"><div class="wrap"><div class="section-head reveal"><h2>We broke a few so you don't have to</h2><p class="lede">Numbers from our own bench tests.</p></div><div class="tests"><div class="test"><b data-count="1.8" data-suffix=" m">0</b><span>drop onto concrete, 10 times, no leak</span></div><div class="test"><b data-count="500">0</b><span>dishwasher cycles, coating intact</span></div><div class="test"><b data-count="-18" data-suffix="°C">0</b><span>freezer overnight, seal still seals</span></div></div></div></section>
+<section class="fin"><div class="wrap"><h2>Lifetime warranty. No forms.</h2><a class="btn btn--lg" style="margin-top:1.5rem" href="#product"><span>Shop the Flask</span></a></div></section>
+</div>
+</main>
+<footer class="ftr"><div class="wrap"><div class="ftr__top"><div><h2>Field notes, once a month.</h2><p class="muted" style="max-width:34em">New gear, test results, early access. Unsubscribe anytime.</p><form class="news" onsubmit="return false"><input type="email" placeholder="Email address"><button class="btn" type="submit"><span>Subscribe</span></button></form></div>
+  <div class="ftr__cols"><div><h3>Shop</h3><ul><li><a href="#">The Flask</a></li><li><a href="#">Lids &amp; seals</a></li><li><a href="#">Sets</a></li></ul></div><div><h3>Help</h3><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty claim</a></li></ul></div><div><h3>Company</h3><ul><li><a href="#">Tests</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div></div></div>
+  <div class="ftr__bot"><span>© 2026 Atlas</span><span>Powered by Shopify</span></div></div></footer>
+<div id="cart-drawer" class="drawer" aria-hidden="true" role="dialog" data-free-ship="5000" data-empty="Your cart is empty" data-shop="Continue shopping">
+  <div class="drawer__scrim" data-cart-close></div>
+  <div class="drawer__panel"><div class="drawer__head"><h2>Your cart</h2><button class="icon-btn" type="button" data-cart-close aria-label="Close">✕</button></div>
+  <div class="free-ship" style="padding:1rem 1.5rem 0" data-away="You're [amount] away from free shipping" data-unlocked="Free shipping unlocked"><span data-free-ship-text></span><div class="free-ship__bar"><span></span></div></div>
+  <div class="drawer__body"></div>
+  <div style="padding:.75rem 1.5rem 0"><div class="upsell__kicker">Customers also add</div><div class="upsell"><img src="img/flask-3.jpg" alt=""><div><b>Spare seals ×3</b><span>$6.00</span></div><button class="x-btn" type="button" data-upsell-add="9">Add</button></div></div>
+  <div class="drawer__foot"><div class="subtotal"><span>Subtotal</span><span data-subtotal>$0.00</span></div><p class="small muted" style="margin:0">Shipping and taxes are calculated at checkout.</p><button class="btn btn--orange btn--block" type="button"><span>Check out</span></button></div></div>
+</div>
+<div class="pop" data-delay="14"><div class="pop__scrim" data-pop-close></div><div class="pop__card" role="dialog"><div class="pop__media"><img src="img/use-trail.jpg" alt=""></div><div class="pop__body"><h3>10% off your first order</h3><p>Join the list. One email a month, unsubscribe anytime.</p><form class="pop__form" onsubmit="return false"><input type="email" placeholder="Email address"><button class="x-btn x-btn--accent" type="submit">Get my code</button></form><button class="pop__skip" type="button" data-pop-close>No thanks</button></div><button class="pop__x" type="button" data-pop-close aria-label="Close">✕</button></div></div>
+<div class="switch"><a href="#home" class="on">Home</a><a href="#product">Product page</a></div>
+<script>function route(){const v=location.hash==='#product'?'product':'home';document.querySelectorAll('[data-view]').forEach(e=>e.classList.toggle('on',e.dataset.view===v));document.querySelectorAll('.switch a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));window.scrollTo(0,0);dispatchEvent(new Event('resize'));dispatchEvent(new Event('scroll'));}addEventListener('hashchange',route);</script>
+<script src="atlas.js"></script><script src="atlas-3d.js"></script><script src="extras.js"></script><script>route();</script>
+<!-- styleswitch --><style>.ssw{position:fixed;right:1rem;bottom:1rem;z-index:10000;font-family:"Inter",system-ui,sans-serif;font-size:.8rem}.ssw__btn{display:inline-flex;align-items:center;gap:.5rem;background:#111;color:#fff;border:0;border-radius:999px;padding:.55rem .9rem .55rem .6rem;cursor:pointer;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);font:inherit;font-weight:600}.ssw__btn i{width:18px;height:18px;border-radius:50%;border:2px solid #fff;display:inline-block}.ssw__menu{position:absolute;right:0;bottom:calc(100% + .5rem);background:#fff;color:#111;border-radius:14px;padding:.4rem;min-width:200px;box-shadow:0 20px 50px -20px rgba(0,0,0,.5);display:none}.ssw.is-open .ssw__menu{display:block}.ssw__menu a{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:9px;color:inherit;text-decoration:none;font-weight:600}.ssw__menu a:hover{background:#f1f1f1}.ssw__menu a.is-on{background:#111;color:#fff}.ssw__menu a i{width:22px;height:22px;border-radius:50%;display:inline-block;flex:none;background:linear-gradient(135deg,var(--a) 50%,var(--b) 50%);box-shadow:inset 0 0 0 2px var(--c)}.ssw__menu small{display:block;font-weight:500;opacity:.6;font-size:.7rem}@media(max-width:700px){.ssw{bottom:4.5rem}}html.is-upper h1,html.is-upper h2,html.is-upper h3{text-transform:uppercase;letter-spacing:-.03em}</style><script>(function(){var P=[{"name": "Signature", "bg": "#E9E4D8", "surface": "#DED8C9", "card": "#FFFFFF", "bg2": null, "fg": "#1E261E", "accent": "#FF5A1F", "accent2": "#FF5A1F", "radius": 12, "font": "lora", "upper": false, "scheme": null, "fonts": {"d": "\"Lora\",Georgia,serif", "s": "\"Inter\",system-ui,sans-serif", "g": "family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700"}}, {"name": "Night", "bg": "#15100F", "surface": "#211A18", "card": "#211A18", "bg2": null, "fg": "#F4F2F1", "accent": "#FF5A1F", "accent2": "#FF5A1F", "radius": 12, "font": "lora", "upper": false, "scheme": null, "fonts": {"d": "\"Lora\",Georgia,serif", "s": "\"Inter\",system-ui,sans-serif", "g": "family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700"}}, {"name": "Shift", "bg": "#E9E4D8", "surface": "#DED8C9", "card": "#FFFFFF", "bg2": null, "fg": "#1E261E", "accent": "#1FFFCE", "accent2": "#1FFFCE", "radius": 12, "font": "lora", "upper": false, "scheme": null, "fonts": {"d": "\"Lora\",Georgia,serif", "s": "\"Inter\",system-ui,sans-serif", "g": "family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700"}}, {"name": "Paper", "bg": "#F4F1EA", "surface": "#EAE6DC", "card": "#FFFFFF", "bg2": null, "fg": "#1A1A1A", "accent": "#1A1A1A", "accent2": "#1A1A1A", "radius": 2, "font": "inter", "upper": false, "scheme": null, "fonts": {"d": "\"Inter Display\",\"Inter\",system-ui,sans-serif", "s": "\"Inter\",system-ui,sans-serif", "g": "family=Inter:wght@400;500;600;700;800;900"}}],M=false;var q=new URLSearchParams(location.search).get('style');var cur=P.find(function(x){return x.name===q})||P[0];var r=document.documentElement;
+if(q&&cur!==P[0]){var st=r.style;st.setProperty('--bg',cur.bg);st.setProperty('--surface',cur.surface);st.setProperty('--fg',cur.fg);st.setProperty('--accent',cur.accent);st.setProperty('--accent-2',cur.accent2);
+if(M){st.setProperty('--bg-2',cur.bg2||cur.card);st.setProperty('--radius',cur.radius+'px');st.setProperty('--font-display',cur.fonts.d);st.setProperty('--font-body',cur.fonts.s);var h=cur.fg.replace('#','');var rr=parseInt(h.slice(0,2),16),gg=parseInt(h.slice(2,4),16),bb=parseInt(h.slice(4,6),16);st.setProperty('--muted','rgba('+rr+','+gg+','+bb+',.66)');st.setProperty('--line','rgba('+rr+','+gg+','+bb+',.12)');r.classList.toggle('theme-light',cur.scheme==='light');}
+else{st.setProperty('--card',cur.card);st.setProperty('--r-lg',cur.radius+'px');st.setProperty('--d',cur.fonts.d);st.setProperty('--s',cur.fonts.s);}
+if(cur.upper)r.classList.add('is-upper');
+var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?'+cur.fonts.g+'&display=swap';document.head.appendChild(l);
+document.querySelectorAll('[data-fx]').forEach(function(c){c.dataset.c1=cur.accent;c.dataset.c2=cur.accent2;c.dataset.bg=cur.bg});document.querySelectorAll('[data-bottle]').forEach(function(c){c.dataset.bg=cur.bg});document.querySelectorAll('[data-backdrop]').forEach(function(c){c.dataset.c1=cur.accent;c.dataset.c2=cur.accent2;c.dataset.bg=cur.bg});}
+var w=document.createElement('div');w.className='ssw';w.innerHTML='<div class="ssw__menu">'+P.map(function(x){var u=new URL(location.href);u.searchParams.set('style',x.name);return '<a href="'+u.pathname+u.search+location.hash+'" class="'+(x===cur?'is-on':'')+'" style="--a:'+x.accent+';--b:'+x.bg+';--c:'+x.fg+'"><i></i><span>'+x.name+'<small>'+x.font.replace('inter','Inter').replace('lora','Lora serif').replace('poppins','Poppins').replace('sora','Sora').replace('plexmono','Plex Mono')+(x.upper?' · caps':'')+'</small></span></a>'}).join('')+'</div><button class="ssw__btn" type="button"><i style="background:'+cur.accent+'"></i>Style: '+cur.name+' <span style="opacity:.6">('+P.length+')</span></button>';
+w.querySelector('.ssw__btn').addEventListener('click',function(){w.classList.toggle('is-open')});document.body.appendChild(w);
+})();</script><!-- /styleswitch --></body></html>

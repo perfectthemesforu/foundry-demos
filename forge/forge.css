@@ -1,0 +1,7 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1,h2{text-transform:uppercase;letter-spacing:-.02em}.btn{text-transform:uppercase;letter-spacing:.06em;font-size:.85rem}
+.card__media,.gal__main,.split__media{box-shadow:0 0 0 1px var(--rule),0 40px 80px -40px rgba(0,0,0,.8)}
+.ticker{background:var(--surface);color:var(--fg);border-bottom:1px solid var(--rule)}.ticker__track i{color:var(--accent);opacity:1}
+.fin{background:var(--bg)}
+.flap{background:#0B0C0D}

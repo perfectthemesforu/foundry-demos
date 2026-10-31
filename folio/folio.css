@@ -1,0 +1,5 @@
+:root{--d:"Lora",Georgia,serif;--s:"Inter",system-ui,sans-serif}
+h1,h2,h3{font-weight:500;letter-spacing:-.02em}.hero__sub{font-family:"Lora",Georgia,serif;font-style:italic}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+:root{--mono:"IBM Plex Mono","DejaVu Sans Mono",ui-monospace,monospace}
+h1{font-size:clamp(3.4rem,9vw,8rem);font-weight:500;letter-spacing:-.03em}h2{font-weight:500}.hero__eyebrow{font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;color:var(--accent)}.hlist .t{font-family:var(--d);font-weight:400}.btn{border-radius:0}.card__media,.gal__main,.split__media,.cmp,.scrolly__media{border-radius:0}.hero__fx canvas{opacity:.6}.section-head{border-bottom:2px solid var(--fg)}.press span{font-family:var(--d);font-weight:500}

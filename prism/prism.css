@@ -1,0 +1,14 @@
+.hero__fx canvas,.fin__fx canvas{opacity:.6;filter:saturate(.75) blur(6px)}
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif;--serif:"Lora",Georgia,serif}
+h1{font-size:clamp(3rem,8vw,7.4rem);letter-spacing:-.055em;line-height:.9}
+.hero{min-height:100svh;display:grid;align-items:center}
+.hero__sub{font-family:var(--serif);font-style:italic;font-size:1.3rem}
+.btn{border-radius:0}.btn--accent{background:var(--fg);color:var(--bg)}.btn--accent::before{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.hero__chips span{background:#fff}
+.card__media,.gal__main,.split__media,.look{border-radius:0}
+.card__media{aspect-ratio:3/4}
+.spec b{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ticker{background:var(--fg);color:#fff}.ticker__track i{opacity:.5}
+.section-head{border-bottom:1px solid var(--fg)}
+.fin{background:var(--surface)}
+.hero__stage{filter:drop-shadow(0 30px 60px rgba(20,20,24,.18))}

@@ -1,0 +1,13 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+h1{font-size:clamp(3.4rem,9.5vw,8.6rem);letter-spacing:-.06em;line-height:.86;text-transform:uppercase}h2{text-transform:uppercase;letter-spacing:-.04em}
+.hero{min-height:100svh;display:grid;align-items:center}
+.btn{border-radius:4px;text-transform:uppercase;letter-spacing:.02em;font-weight:800}.btn--accent{color:#fff}
+.spec b,.flapcard .flap{color:var(--fg)}
+.ticker{background:var(--accent);color:#fff;font-weight:800;text-transform:uppercase}.ticker__track i{opacity:.6}
+.card__media,.gal__main,.split__media{border-radius:var(--r-lg)}
+.card__media img{transition:transform .5s var(--ease)}.card:hover .card__media img{transform:scale(1.06) skewY(-2deg)}
+.split__media{transform:rotate(-1.5deg)}
+.section-head{border-bottom:2px solid var(--fg)}
+.tests{background:var(--accent);border-color:var(--accent)}.test{background:var(--bg)}.test b{color:var(--accent-2)}
+.fin{background:var(--accent);color:#fff}.fin p{color:rgba(255,255,255,.8)}.fin .btn--accent{background:var(--fg);color:var(--bg)}.fin .fin__fx{opacity:.25}
+.hero__chips span{background:var(--surface);box-shadow:inset 0 0 0 1px var(--rule);text-transform:uppercase;font-weight:800;font-size:.75rem}

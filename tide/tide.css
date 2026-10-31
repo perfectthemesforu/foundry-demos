@@ -1,0 +1,11 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center;color:var(--fg)}
+.hero__fx::after{background:linear-gradient(180deg,transparent 55%,var(--bg))}
+.btn{border-radius:999px}.btn--accent{color:#fff}
+.hero__chips span{background:rgba(255,255,255,.7)}
+.card__media,.gal__main,.split__media{border-radius:var(--r-lg)}
+.spec b{color:var(--accent)}
+.ticker{background:var(--fg);color:#fff}.ticker__track i{color:var(--accent-2);opacity:1}
+.look{border-radius:var(--r-lg)}
+.fin{background:var(--fg);color:#fff}.fin p{color:rgba(255,255,255,.75)}.fin .btn--accent{background:var(--accent-2);color:var(--fg)}
+.section-head{border-bottom-color:var(--rule)}

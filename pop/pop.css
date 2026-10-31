@@ -1,0 +1,3 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1,h2,h3{letter-spacing:-.045em;font-weight:900}.btn{border-radius:999px;font-weight:800}.btn--accent{box-shadow:0 10px 0 color-mix(in srgb,var(--accent) 60%,#000)}.btn--accent:active{transform:translateY(6px);box-shadow:0 4px 0 color-mix(in srgb,var(--accent) 60%,#000)}.card__media,.deck__card,.bento__cell,.hpanel{border-radius:32px}.hero__stage{border-radius:50%;background:var(--accent-2);aspect-ratio:1}.trustrow>div{border-radius:999px}.ticker{background:var(--accent);color:#fff}.ticker__track i{color:#fff}.sticker{animation-duration:10s}.fin{background:var(--accent-2);color:var(--fg)}

@@ -1,0 +1,235 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Silk — beauty Shopify theme preview</title>
+<style>
+@font-face{font-family:"Lora";font-weight:400 700;src:url(../fonts/Lora-Variable.ttf) format("truetype")}
+@font-face{font-family:"Inter";font-weight:400;src:url(../fonts/Inter-Regular.otf) format("opentype")}
+@font-face{font-family:"Inter";font-weight:500;src:url(../fonts/Inter-Medium.otf) format("opentype")}
+@font-face{font-family:"Inter";font-weight:600;src:url(../fonts/Inter-SemiBold.otf) format("opentype")}
+</style>
+<link rel="stylesheet" href="silk.css">
+<style>
+.ph{width:100%;height:100%;display:grid;place-items:center;color:rgba(26,20,22,.35);font-family:var(--serif);background:linear-gradient(160deg,#E6D2CE,#D4BDB8)}
+.concern .ph{position:absolute;inset:0}
+.switch{position:fixed;left:1rem;bottom:1rem;z-index:70;display:flex;gap:.3rem;background:var(--noir);padding:.35rem;border-radius:999px;box-shadow:0 10px 40px -10px rgba(0,0,0,.5)}
+.switch a{padding:.5rem .9rem;border-radius:999px;text-decoration:none;font-weight:500;font-size:.85rem;color:#F5ECEA}
+.switch a.on{background:#F5ECEA;color:#1A1416}
+[data-view]{display:none}[data-view].on{display:block}
+</style></head>
+<body>
+<script>
+const _cart={items:[],item_count:0,total_price:0};
+window.theme={moneyFormat:'${{amount}}',routes:{cart_url:'/cart',cart_add_url:'/cart/add',cart_change_url:'/cart/change'},strings:{addToCart:'Add to bag',soldOut:'Sold out',save:'Save {{ pct }}%',remove:'Remove'}};
+const _f=window.fetch;window.fetch=async(u,o)=>{const j=(d)=>new Response(JSON.stringify(d),{status:200,headers:{'Content-Type':'application/json'}});
+ if(u.startsWith('/cart/add')){const b=JSON.parse(o.body);b.items.forEach(it=>{const ex=_cart.items.find(x=>x.id===it.id);if(ex)ex.quantity+=it.quantity;else _cart.items.push({id:it.id,key:'k'+it.id,quantity:it.quantity,product_title:'The Serum',variant_title:'30 ml',url:'#product',image:'',price:5800})});recalc();return j(_cart)}
+ if(u.startsWith('/cart/change')){const b=JSON.parse(o.body);const it=_cart.items.find(x=>x.key===b.id);if(it){it.quantity=b.quantity;if(!b.quantity)_cart.items.splice(_cart.items.indexOf(it),1)}recalc();return j(_cart)}
+ if(u.startsWith('/cart'))return j(_cart);return _f(u,o)};
+function recalc(){_cart.item_count=_cart.items.reduce((a,b)=>a+b.quantity,0);_cart.items.forEach(i=>i.final_line_price=i.price*i.quantity);_cart.total_price=_cart.items.reduce((a,b)=>a+b.final_line_price,0)}
+</script>
+
+<div class="ticker"><div class="ticker__track"><span><span>Free shipping over $50</span><i>·</i><span>30-day returns, even if opened</span><i>·</i><span>Dermatologist tested</span><i>·</i></span><span aria-hidden="true"><span>Free shipping over $50</span><i>·</i><span>30-day returns, even if opened</span><i>·</i><span>Dermatologist tested</span><i>·</i></span></div></div>
+<header class="hdr"><div class="wrap hdr__in">
+  <button class="icon-btn menu-btn" type="button" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <nav class="nav"><a href="#product" aria-current="page">Shop</a><a href="#home">How it works</a><a href="#reviews">Reviews</a><a href="#home">Journal</a></nav>
+  <a class="logo" href="#home" style="grid-column:2;grid-row:1">Aveline</a>
+  <div class="hdr__acts"><a class="icon-btn" href="#" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a><a class="icon-btn" href="#" data-cart-open aria-label="Bag"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cart-count" data-count="0">0</span></a></div>
+</div></header>
+
+<main id="MainContent">
+<div data-view="home" class="on">
+<section class="hero">
+  <div class="hero__fallback"></div>
+  <canvas class="hero__gl" data-liquid data-c1="#EEDDDB" data-c2="#FFD7CF" data-bg="#F5ECEA"></canvas>
+  <div class="wrap hero__in">
+    <div class="hero__copy">
+      <h1><span class="ln"><span>Morning puffiness,</span></span><span class="ln"><span>gone before</span></span><span class="ln"><span>your coffee.</span></span></h1>
+      <p class="hero__sub">A cold-and-heat wand that reaches 10°C in seconds. No freezer, no ice burn, no twelve-step routine.</p>
+      <div class="hero__ctas"><a class="btn btn--lg" href="#product"><span>Shop The Wand — $69</span></a><a class="btn btn--lg btn--line" href="#home"><span>How it works</span></a></div>
+      <p class="hero__note"><b>30 days</b>to try it. Full refund if your face disagrees.</p>
+    </div>
+    <div class="hero__grain"></div><div class="hero__stage hero__stage--float"><div class="hero__orbit"><i></i></div><div class="hero__halo"></div><div class="hero__shadow"></div><canvas class="hero__3d" data-bottle data-shape="wand" data-brand="Aveline" data-name="The Wand" data-sub="Niacinamide 5% · Hyaluronic 2%" data-size="30 ml  e  1 fl oz" data-label="#7A1F2E" data-glass="#F7EEEA" data-fluid="#F3DCD4" data-cap="#1A1416" data-bg="#F5ECEA" role="img" aria-label="3D model of The Wand, drag to rotate"></canvas><span class="hero__hint">Drag to turn the wand</span><div class="hero__img"><img src="img/wand.webp" alt="" width="800" height="1000"></div><div class="hero__pill"><b>10°C</b>in under ten seconds. Heat to 42°C for serum.</div></div>
+  </div>
+</section>
+
+<section class="block--half"><div class="wrap">
+  <div class="results"><div class="result"><b data-count="10" data-suffix="°C">0</b><span>cold mode, in seconds — no freezer</span></div><div class="result"><b data-count="42" data-suffix="°C">0</b><span>warm mode, for serum absorption</span></div><div class="result"><b data-count="6" data-suffix=" min">0</b><span>per treatment, then it switches itself off</span></div></div>
+  <p class="results__note">Device specifications from the supplier listing. Add your own test results here only once you have them.</p>
+</div></section>
+
+<section class="block"><div class="wrap ba">
+  <div class="cmp"><img src="img/skin-before.jpg" alt="Skin texture, week 0 (sample)"><div class="cmp__after"><img src="img/skin-after.jpg" alt="Skin texture, week 4 (sample)"></div><span class="cmp__lab cmp__lab--a">Before</span><span class="cmp__lab cmp__lab--b">After one cycle</span><div class="cmp__handle"><i>‹ ›</i></div><input type="range" min="0" max="100" value="50" aria-label="Compare"></div>
+  <div class="ba__text"><h2 class="reveal">Drag to see six minutes</h2><p class="lede">One side of the face, one cold cycle. Same light, same angle, no retouching.</p>
+    <ol class="ba__steps"><li><b>0:00</b><span>Cold mode on. The tip reaches 10°C before you reach the mirror.</span></li><li><b>3:00</b><span>Light flashes — switch sides.</span></li><li><b>6:00</b><span>Auto-off. Eyes and jaw look less puffy; skin feels tighter for an hour or two.</span></li></ol>
+    <p class="small muted" style="margin-top:1.25rem">Individual results vary. Use only genuine, unedited photos with written consent.</p></div>
+</div></section>
+
+<section class="block"><div class="wrap swatch">
+  <div class="swatch__panel">
+    <svg viewBox="0 0 800 600" aria-hidden="true"><defs><filter id="swblur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.5"/></filter></defs><path class="swatch__smear" d="M150 420 C 200 250, 330 230, 420 300 S 600 380, 660 200"/><path class="swatch__gloss" d="M150 420 C 200 250, 330 230, 420 300 S 600 380, 660 200" transform="translate(-10,-14)"/></svg>
+    <div class="swatch__tone" role="group" aria-label="Skin tone"><button type="button" aria-pressed="true" style="--c:#E8C4B5" data-light="#F0D6CB" data-dark="#D8B3A5"></button><button type="button" aria-pressed="false" style="--c:#C9977B" data-light="#D8AA90" data-dark="#B5856A"></button><button type="button" aria-pressed="false" style="--c:#9A6A4E" data-light="#A97A5E" data-dark="#86593F"></button><button type="button" aria-pressed="false" style="--c:#5E3B2B" data-light="#6E4836" data-dark="#4A2D20"></button></div>
+  </div>
+  <div><h2 class="reveal">See the texture on skin</h2><p class="lede">Pick a shade, then a skin tone. The swatch shows finish and sheerness, not a colour match.</p>
+    <div class="swatch__opts"><button class="swatch__opt" type="button" aria-pressed="false" data-color="#F6E6E0" data-opacity=".9"><i style="--c:#F6E6E0"></i><span><b>Original</b><span>Clear-to-milky, sinks in fast.</span></span><small>Dewy</small></button><button class="swatch__opt" type="button" aria-pressed="false" data-color="#C98B7A" data-opacity=".7"><i style="--c:#C98B7A"></i><span><b>Tinted</b><span>Sheer wash of warmth, evens tone.</span></span><small>Soft-matte</small></button></div></div>
+</div></section>
+<section class="block block--blush"><div class="wrap ing">
+  <div class="ing__aside"><h2 class="reveal">What's in it, and how much</h2><p class="lede">Concentrations printed on the label, not hidden in the fine print.</p><div class="ing__free"><span>Fragrance-free</span><span>Alcohol-free</span><span>Vegan</span><span>Cruelty-free</span></div></div>
+  <div class="ing__list">
+    <article class="ingr"><h3>Niacinamide</h3><span class="ingr__pct">5%</span><p>Supports the skin barrier and visibly evens tone.</p><i style="--w:50%"></i></article>
+    <article class="ingr"><h3>Hyaluronic acid</h3><span class="ingr__pct">2%</span><p>Three molecular weights for surface and deeper hydration.</p><i style="--w:30%"></i></article>
+    <article class="ingr"><h3>Panthenol</h3><span class="ingr__pct">1%</span><p>Calms and helps skin hold on to moisture.</p><i style="--w:15%"></i></article>
+    <article class="ingr"><h3>Squalane</h3><span class="ingr__pct">0.5%</span><p>Plant-derived, lightweight, non-comedogenic.</p><i style="--w:8%"></i></article>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="section-head reveal"><h2>Six minutes, morning or night</h2><p class="lede">Where the wand fits, whatever else you use.</p></div>
+  <div class="routine">
+    <div class="routine__half routine__half--am"><h3><i></i>Morning</h3><ol><li><div><b>Cleanse</b><span>Lukewarm water, pat dry.</span></div></li><li><div><b>The Wand, cold</b><span>Three minutes a side under the eyes and along the jaw.</span></div></li><li><div><b>SPF 30+</b><span>Every morning, even indoors.</span></div></li></ol></div>
+    <div class="routine__half routine__half--pm"><h3><i></i>Evening</h3><ol><li><div><b>Cleanse</b><span>Lukewarm water, pat dry.</span></div></li><li><div><b>The Wand, warm</b><span>Apply serum, then 42°C over the face to help it sink in.</span></div></li><li><div><b>Moisturiser</b><span>Seal it in. Retinol users: retinol first, then moisturise.</span></div></li></ol></div>
+  </div>
+</div></section>
+
+<section class="block--half" style="padding-bottom:var(--block)"><div class="wrap">
+  <div class="section-head reveal"><h2>Start with your skin</h2><p class="lede">Pick the thing you'd change first.</p></div>
+  <div class="concerns">
+    <a class="concern" href="#product"><img src="img/tile-1.jpg" alt=""><h3>Dullness</h3><span>Brighten and even</span></a>
+    <a class="concern" href="#product"><img src="img/tile-2.jpg" alt=""><h3>Texture</h3><span>Smooth and refine</span></a>
+    <a class="concern" href="#product"><img src="img/tile-3.jpg" alt=""><h3>Dryness</h3><span>Hydrate and hold</span></a>
+    <a class="concern" href="#product"><img src="img/tile-4.jpg" alt=""><h3>Redness</h3><span>Calm and protect</span></a>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="section-head reveal"><h2>The edit</h2><p><a class="btn btn--line" href="#product"><span>View all</span></a></p></div>
+  <div class="grid">
+    <a class="card" href="#product"><div class="card__media"><img src="img/wand-1.jpg" alt="The Wand"><img src="img/wand-2.jpg" alt=""><span class="card__badge">New</span><span class="card__cta btn btn--block"><span>View</span></span></div><div class="card__row"><span class="card__title">The Wand</span><span class="card__price">$69.00</span></div></a>
+    <a class="card" href="#product"><div class="card__media"><img src="img/shot-1.jpg" alt="The Serum"><img src="img/shot-2.jpg" alt=""><span class="card__cta btn btn--block"><span>View</span></span></div><div class="card__row"><span class="card__title">The Serum</span><span class="card__price">$58.00</span></div></a>
+    <a class="card" href="#product"><div class="card__media"><img src="img/wand-4.jpg" alt="The Set"><span class="card__badge">Set</span><span class="card__cta btn btn--block"><span>View</span></span></div><div class="card__row"><span class="card__title">The Set — Wand + Serum</span><span class="card__price">$109.00<s>$127.00</s></span></div></a>
+  </div>
+</div></section>
+
+<section class="block" id="reviews"><div class="wrap">
+  <div class="section-head reveal"><h2>What customers say</h2><p class="lede">Every review is from a verified order, collected by email after delivery.</p></div>
+  <div class="rv">
+    <aside class="rv__sum"><div class="rv__big">4.8</div><div class="rv__stars">★★★★★</div><div class="rv__count">Based on 0 reviews — this is how it will look once your reviews app is live</div>
+      <div class="rv__bars"><div class="rv__bar"><span>5 ★</span><i style="--w:82%"></i><span>82%</span></div><div class="rv__bar"><span>4 ★</span><i style="--w:12%"></i><span>12%</span></div><div class="rv__bar"><span>3 ★</span><i style="--w:4%"></i><span>4%</span></div><div class="rv__bar"><span>2 ★</span><i style="--w:1%"></i><span>1%</span></div><div class="rv__bar"><span>1 ★</span><i style="--w:1%"></i><span>1%</span></div></div>
+      <div class="rv__chips"><span>Puffiness</span><span>Mornings</span><span>Travel</span><span>Serum nights</span></div>
+      <p class="small muted" style="margin:1.25rem 0 0">Sample layout. Cards marked "Sample" are placeholders, not customer reviews.</p></aside>
+    <div class="rv__list">
+      <article class="rvc rvc--photo"><span class="rvc__sample">Sample</span><div class="rvc__head"><b>Example name</b><span class="rvc__ver">Verified buyer</span><span>London · Combination skin</span></div><div><div class="rvc__stars">★★★★★</div><h4>Replaces my ice roller</h4><p>This is where a real customer's words go. Judge.me or Loox will pull them in automatically after delivery, with their photo if they add one.</p></div><img class="rvc__img" src="img/wand-2.jpg" alt=""><div class="rvc__meta"><span>2 weeks ago</span><span>The Wand · Porcelain</span></div></article>
+      <article class="rvc"><span class="rvc__sample">Sample</span><div class="rvc__head"><b>Example name</b><span class="rvc__ver">Verified buyer</span><span>Austin, TX</span></div><div><div class="rvc__stars">★★★★★</div><h4>Morning routine, sorted</h4><p>Second sample card. Reviews with a title, star rating and a short paragraph convert best — the app will prompt customers for exactly that.</p></div><div class="rvc__meta"><span>3 weeks ago</span><span>The Wand · Noir</span></div></article>
+      <article class="rvc"><span class="rvc__sample">Sample</span><div class="rvc__head"><b>Example name</b><span>Manchester</span></div><div><div class="rvc__stars">★★★★</div><h4>Good, wish the battery lasted longer</h4><p>A four-star card. Keep these — a page of only five-star reviews reads as fake, and a mix is what the FTC and ASA expect to see.</p></div><div class="rvc__meta"><span>1 month ago</span><span>The Wand · Porcelain</span></div></article>
+      <a class="btn btn--line rv__more" href="#reviews"><span>Read all reviews</span></a>
+    </div>
+  </div>
+</div></section>
+<section class="block block--blush"><div class="wrap">
+  <div class="section-head reveal"><h2>Why not just use ice?</h2><p class="lede">Honest comparison. Only claim what you can show.</p></div>
+  <div style="overflow-x:auto"><table class="cmpt"><thead><tr><th></th><th class="us">The Wand</th><th>Ice roller / globes</th><th>Premium wands</th></tr></thead><tbody>
+    <tr><td>Price</td><td class="us">$69</td><td>$15–40</td><td>$130–170</td></tr>
+    <tr><td>Needs a freezer</td><td class="us">No</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Temperature control</td><td class="us">3 cold, 2 warm</td><td>None — starts freezing, warms in minutes</td><td>3 cold, 3 warm</td></tr>
+    <tr><td>Warm mode for serum</td><td class="us">Yes, 38–42°C</td><td>No</td><td>Yes</td></tr>
+    <tr><td>Auto-off</td><td class="us">6 min</td><td>—</td><td>6 min</td></tr>
+    <tr><td>Guarantee</td><td class="us">30 days, any reason</td><td>Varies</td><td>30 days</td></tr>
+  </tbody></table></div>
+  <p class="small muted" style="margin-top:1rem">Competitor prices checked October 2026; they change.</p>
+</div></section>
+
+<section class="block"><div class="wrap faq">
+  <div><h2 class="reveal">Questions</h2><p class="lede">Not sure it suits your skin? Email us a photo and a skincare advisor will reply.</p></div>
+  <div class="acc"><details open><summary>Does it actually get cold?</summary><div class="acc__body">Yes — the tip reaches about 10°C within seconds of pressing the cold button, and holds it for the six-minute cycle.</div></details><details><summary>Is it safe for sensitive skin?</summary><div class="acc__body">The cold settings are gentler than ice. Start on 14°C. Don't use on broken skin.</div></details><details><summary>Can I use it with my serum?</summary><div class="acc__body">That's what warm mode is for — apply, then glide at 38–42°C.</div></details><details><summary>Returns?</summary><div class="acc__body">30 days, even if opened.</div></details></div>
+</div></section>
+
+<section class="fin"><canvas class="fin__gl" data-liquid data-c1="#FFD7CF" data-c2="#FFFFFF" data-bg="#EEDDDB"></canvas><div class="wrap fin__in"><h2>Thirty days. If your skin doesn't notice, we refund it.</h2><p class="lede" style="text-align:center">Even if the bottle is half empty.</p><a class="btn btn--lg" style="margin-top:1.5rem" href="#product"><span>Shop the routine</span></a></div></section>
+</div>
+
+<div data-view="product">
+<section class="wrap pdp">
+  <div class="gal"><div class="gal__main"><img src="img/wand-1.jpg" alt="The Wand" width="900" height="1125"></div><div class="gal__thumbs"><button type="button" aria-current="true" data-src="img/wand-1.jpg"><img src="img/wand-1.jpg" alt=""></button><button type="button" data-src="img/wand-2.jpg"><img src="img/wand-2.jpg" alt=""></button><button type="button" data-src="img/wand-3.jpg"><img src="img/wand-3.jpg" alt=""></button><button type="button" data-src="img/wand-4.jpg"><img src="img/wand-4.jpg" alt=""></button></div></div>
+  <div class="buy">
+    <p class="buy__kicker">Cold + heat facial wand</p><h1>The Wand</h1><p class="buy__sub">Ten-degree cold in seconds, for puffy mornings. Gentle heat for serum nights.</p>
+    <div class="rating-slot"><span style="color:var(--ox);letter-spacing:.1em;font-size:.8rem">★★★★★</span> <span class="small muted">Reviews app block goes here</span></div>
+    <div class="price"><span class="price__now" data-price-now>$69.00</span><s class="price__was" data-price-was hidden></s><span class="price__save" data-price-save hidden></span></div>
+    <form data-product-form data-variants><input type="hidden" name="id" value="1">
+      <script type="application/json" data-variants-json>[{"id":1,"price":6900,"available":true,"options":["Porcelain"],"featured_image":null},{"id":2,"price":6900,"available":true,"options":["Noir"],"featured_image":null}]</script>
+      <fieldset class="swatches"><legend>Finish <span data-sel-label="0"></span></legend><div class="swatches__row"><label class="sw" title="Porcelain"><input type="radio" name="option-0" data-option="0" value="Porcelain" checked><i style="--c:#F3E7E2"></i></label><label class="sw" title="Noir"><input type="radio" name="option-0" data-option="0" value="Noir"><i style="--c:#1A1416"></i></label></div></fieldset>
+      <fieldset class="tiers"><legend>Choose your bundle</legend>
+        <label class="tier"><input type="radio" name="offer" data-qty="1" data-price="6900" data-each="6900" data-discount="0" data-label="One wand" checked><span class="tier__dot"></span><span><span class="tier__t">One wand</span><span class="tier__s">USB-C cable and travel cap included</span></span><span class="tier__p"><span data-tier-total>$69.00</span></span></label>
+        <label class="tier"><input type="radio" name="offer" data-qty="2" data-price="6900" data-each="5865" data-discount="15" data-label="Two wands"><span class="tier__dot"></span><span><span class="tier__t">Two wands</span><span class="tier__s">One for the bathroom, one for the bag — or a gift</span></span><span class="tier__p"><span data-tier-total>$117.30</span><small>15% off each</small></span><span class="tier__tag">Gift pair</span></label>
+        
+      </fieldset>
+      <button class="btn btn--ox btn--lg btn--block" type="submit" data-atc><span data-atc-label>Add to bag</span></button>
+      <p class="form-error" role="alert"></p>
+    </form>
+    <p class="ship">Order today, arrives Nov 1 – Nov 5</p>
+    <ul class="trust"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>Free shipping over $50, UK &amp; US</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>30-day refund, even if opened</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c4-3 7-6.5 7-10a7 7 0 0 0-14 0c0 3.5 3 7 7 10Z"/></svg>12-month warranty on the device</li></ul>
+    <div class="pdp__desc rte"><p>A rechargeable wand with a smooth aluminium tip that drops to 10°C in seconds, or warms to 42°C. Cold mode in the morning for eyes and jawline that look less puffy; warm mode at night to help serum sink in. Six-minute cycles, then it switches itself off.</p><p class="small">Sample product content — replace with your own once you have the supplier's spec sheet.</p></div>
+    <div style="margin-top:1.5rem"><h3 style="font-size:1.2rem">How to use</h3><ol class="howto"><li>Hold the snowflake button: cold in seconds.</li><li>Glide from the inner eye outward, then along the jaw. Three minutes a side.</li><li>Evenings: apply serum, hold the sun button, warm mode over the face.</li></ol></div>
+    <div class="acc" style="margin-top:1.5rem"><details><summary>Specifications</summary><div class="acc__body">Cold 10 / 12 / 14°C · Warm 38 / 42°C · 6-minute auto-off · ~35 min per charge · USB-C · 180 g · aluminium tip, matte handle.</div></details><details><summary>Safety</summary><div class="acc__body">Not for use on broken skin, during migraine aura, or with implanted electronics near the face. Wipe the tip after each use.</div></details></div>
+  </div>
+</section>
+<div class="sticky"><div class="wrap sticky__in"><span class="sticky__t">The Wand</span><button class="btn" type="button" data-sticky-atc><span>Add to bag — <span data-price-now>$69.00</span></span></button></div></div>
+<section class="block block--blush"><div class="wrap ing"><div class="ing__aside"><h2 class="reveal">What it does, by the numbers</h2><p class="lede">Temperatures chosen to feel like ice without the ice.</p></div><div class="ing__list"><article class="ingr"><h3>Cold mode</h3><span class="ingr__pct">10°C</span><p>Three settings: 10, 12 and 14°C. Reaches temperature in seconds.</p><i style="--w:30%"></i></article><article class="ingr"><h3>Warm mode</h3><span class="ingr__pct">42°C</span><p>Two settings: 38 and 42°C, for serum nights.</p><i style="--w:85%"></i></article><article class="ingr"><h3>Treatment</h3><span class="ingr__pct">6 min</span><p>Flashes at three minutes to switch sides, then turns itself off.</p><i style="--w:50%"></i></article><article class="ingr"><h3>Battery</h3><span class="ingr__pct">~35 min</span><p>About six treatments per USB-C charge.</p><i style="--w:60%"></i></article></div></div></section>
+<section class="block" id="reviews"><div class="wrap">
+  <div class="section-head reveal"><h2>What customers say</h2><p class="lede">Every review is from a verified order, collected by email after delivery.</p></div>
+  <div class="rv">
+    <aside class="rv__sum"><div class="rv__big">4.8</div><div class="rv__stars">★★★★★</div><div class="rv__count">Based on 0 reviews — this is how it will look once your reviews app is live</div>
+      <div class="rv__bars"><div class="rv__bar"><span>5 ★</span><i style="--w:82%"></i><span>82%</span></div><div class="rv__bar"><span>4 ★</span><i style="--w:12%"></i><span>12%</span></div><div class="rv__bar"><span>3 ★</span><i style="--w:4%"></i><span>4%</span></div><div class="rv__bar"><span>2 ★</span><i style="--w:1%"></i><span>1%</span></div><div class="rv__bar"><span>1 ★</span><i style="--w:1%"></i><span>1%</span></div></div>
+      <div class="rv__chips"><span>Puffiness</span><span>Mornings</span><span>Travel</span><span>Serum nights</span></div>
+      <p class="small muted" style="margin:1.25rem 0 0">Sample layout. Cards marked "Sample" are placeholders, not customer reviews.</p></aside>
+    <div class="rv__list">
+      <article class="rvc rvc--photo"><span class="rvc__sample">Sample</span><div class="rvc__head"><b>Example name</b><span class="rvc__ver">Verified buyer</span><span>London · Combination skin</span></div><div><div class="rvc__stars">★★★★★</div><h4>Replaces my ice roller</h4><p>This is where a real customer's words go. Judge.me or Loox will pull them in automatically after delivery, with their photo if they add one.</p></div><img class="rvc__img" src="img/wand-2.jpg" alt=""><div class="rvc__meta"><span>2 weeks ago</span><span>The Wand · Porcelain</span></div></article>
+      <article class="rvc"><span class="rvc__sample">Sample</span><div class="rvc__head"><b>Example name</b><span class="rvc__ver">Verified buyer</span><span>Austin, TX</span></div><div><div class="rvc__stars">★★★★★</div><h4>Morning routine, sorted</h4><p>Second sample card. Reviews with a title, star rating and a short paragraph convert best — the app will prompt customers for exactly that.</p></div><div class="rvc__meta"><span>3 weeks ago</span><span>The Wand · Noir</span></div></article>
+      <article class="rvc"><span class="rvc__sample">Sample</span><div class="rvc__head"><b>Example name</b><span>Manchester</span></div><div><div class="rvc__stars">★★★★</div><h4>Good, wish the battery lasted longer</h4><p>A four-star card. Keep these — a page of only five-star reviews reads as fake, and a mix is what the FTC and ASA expect to see.</p></div><div class="rvc__meta"><span>1 month ago</span><span>The Wand · Porcelain</span></div></article>
+      <a class="btn btn--line rv__more" href="#reviews"><span>Read all reviews</span></a>
+    </div>
+  </div>
+</div></section>
+<section class="block block--blush"><div class="wrap">
+  <div class="section-head reveal"><h2>Why not just use ice?</h2><p class="lede">Honest comparison. Only claim what you can show.</p></div>
+  <div style="overflow-x:auto"><table class="cmpt"><thead><tr><th></th><th class="us">The Wand</th><th>Ice roller / globes</th><th>Premium wands</th></tr></thead><tbody>
+    <tr><td>Price</td><td class="us">$69</td><td>$15–40</td><td>$130–170</td></tr>
+    <tr><td>Needs a freezer</td><td class="us">No</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Temperature control</td><td class="us">3 cold, 2 warm</td><td>None — starts freezing, warms in minutes</td><td>3 cold, 3 warm</td></tr>
+    <tr><td>Warm mode for serum</td><td class="us">Yes, 38–42°C</td><td>No</td><td>Yes</td></tr>
+    <tr><td>Auto-off</td><td class="us">6 min</td><td>—</td><td>6 min</td></tr>
+    <tr><td>Guarantee</td><td class="us">30 days, any reason</td><td>Varies</td><td>30 days</td></tr>
+  </tbody></table></div>
+  <p class="small muted" style="margin-top:1rem">Competitor prices checked October 2026; they change.</p>
+</div></section>
+<section class="fin"><canvas class="fin__gl" data-liquid data-c1="#FFD7CF" data-c2="#FFFFFF" data-bg="#EEDDDB"></canvas><div class="wrap fin__in"><h2>Thirty days. If your skin doesn't notice, we refund it.</h2><a class="btn btn--lg" style="margin-top:1.5rem" href="#product"><span>Shop the routine</span></a></div></section>
+</div>
+</main>
+
+<footer class="ftr"><div class="wrap">
+  <div class="ftr__top"><div><h2>Skincare notes, once a month.</h2><p class="muted" style="max-width:34em">Routines, ingredients, early access. Unsubscribe anytime.</p><form class="news" onsubmit="return false"><input type="email" placeholder="Email address"><button class="btn" type="submit"><span>Subscribe</span></button></form></div>
+  <div class="ftr__cols"><div><h3>Shop</h3><ul><li><a href="#">The Serum</a></li><li><a href="#">The Cleanser</a></li><li><a href="#">Sets</a></li></ul></div><div><h3>Help</h3><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Skin advice</a></li></ul></div><div><h3>Company</h3><ul><li><a href="#">About</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div></div></div>
+  <div class="ftr__bot"><span>© 2026 Aveline</span><span>Powered by Shopify</span></div>
+</div></footer>
+
+<div id="cart-drawer" class="drawer" aria-hidden="true" role="dialog" data-free-ship="5000" data-empty="Your bag is empty" data-shop="Continue shopping">
+  <div class="drawer__scrim" data-cart-close></div>
+  <div class="drawer__panel"><div class="drawer__head"><h2>Your bag</h2><button class="icon-btn" type="button" data-cart-close aria-label="Close">✕</button></div>
+  <div class="free-ship" style="padding:1rem 1.5rem 0" data-away="You're [amount] away from free shipping" data-unlocked="Free shipping unlocked"><span data-free-ship-text></span><div class="free-ship__bar"><span></span></div></div>
+  <div class="drawer__body"></div>
+  <div class="drawer__foot"><div class="subtotal"><span>Subtotal</span><span data-subtotal>$0.00</span></div><p class="small muted" style="margin:0">Shipping and taxes are calculated at checkout.</p><button class="btn btn--ox btn--block" type="button"><span>Check out</span></button></div></div>
+</div>
+
+<div class="switch"><a href="#home" class="on">Home</a><a href="#product">Product page</a></div>
+<script>
+function route(){const v=location.hash==='#product'?'product':'home';document.querySelectorAll('[data-view]').forEach(e=>e.classList.toggle('on',e.dataset.view===v));document.querySelectorAll('.switch a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));window.scrollTo(0,0);dispatchEvent(new Event('resize'));dispatchEvent(new Event('scroll'));}
+addEventListener('hashchange',route);
+</script>
+<script src="silk.js"></script>
+<script src="silk-3d.js"></script>
+<script>route();</script>
+<!-- styleswitch --><style>.ssw{position:fixed;right:1rem;bottom:1rem;z-index:10000;font-family:"Inter",system-ui,sans-serif;font-size:.8rem}.ssw__btn{display:inline-flex;align-items:center;gap:.5rem;background:#111;color:#fff;border:0;border-radius:999px;padding:.55rem .9rem .55rem .6rem;cursor:pointer;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);font:inherit;font-weight:600}.ssw__btn i{width:18px;height:18px;border-radius:50%;border:2px solid #fff;display:inline-block}.ssw__menu{position:absolute;right:0;bottom:calc(100% + .5rem);background:#fff;color:#111;border-radius:14px;padding:.4rem;min-width:200px;box-shadow:0 20px 50px -20px rgba(0,0,0,.5);display:none}.ssw.is-open .ssw__menu{display:block}.ssw__menu a{display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:9px;color:inherit;text-decoration:none;font-weight:600}.ssw__menu a:hover{background:#f1f1f1}.ssw__menu a.is-on{background:#111;color:#fff}.ssw__menu a i{width:22px;height:22px;border-radius:50%;display:inline-block;flex:none;background:linear-gradient(135deg,var(--a) 50%,var(--b) 50%);box-shadow:inset 0 0 0 2px var(--c)}.ssw__menu small{display:block;font-weight:500;opacity:.6;font-size:.7rem}@media(max-width:700px){.ssw{bottom:4.5rem}}html.is-upper h1,html.is-upper h2,html.is-upper h3{text-transform:uppercase;letter-spacing:-.03em}</style><script>(function(){var P=[{"name": "Signature", "bg": "#F5ECEA", "surface": "#EEDDDB", "card": "#FFFFFF", "bg2": null, "fg": "#1A1416", "accent": "#7A1F2E", "accent2": "#FFD7CF", "radius": 14, "font": "lora", "upper": false, "scheme": null, "fonts": {"d": "\"Lora\",Georgia,serif", "s": "\"Inter\",system-ui,sans-serif", "g": "family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700"}}, {"name": "Night", "bg": "#150F10", "surface": "#211819", "card": "#211819", "bg2": null, "fg": "#F4F1F1", "accent": "#D86477", "accent2": "#FFD7CF", "radius": 14, "font": "lora", "upper": false, "scheme": null, "fonts": {"d": "\"Lora\",Georgia,serif", "s": "\"Inter\",system-ui,sans-serif", "g": "family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700"}}, {"name": "Shift", "bg": "#F5ECEA", "surface": "#EEDDDB", "card": "#FFFFFF", "bg2": null, "fg": "#1A1416", "accent": "#1F7A3F", "accent2": "#CFE0FF", "radius": 14, "font": "lora", "upper": false, "scheme": null, "fonts": {"d": "\"Lora\",Georgia,serif", "s": "\"Inter\",system-ui,sans-serif", "g": "family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700"}}, {"name": "Paper", "bg": "#F4F1EA", "surface": "#EAE6DC", "card": "#FFFFFF", "bg2": null, "fg": "#1A1A1A", "accent": "#1A1A1A", "accent2": "#7A1F2E", "radius": 2, "font": "inter", "upper": false, "scheme": null, "fonts": {"d": "\"Inter Display\",\"Inter\",system-ui,sans-serif", "s": "\"Inter\",system-ui,sans-serif", "g": "family=Inter:wght@400;500;600;700;800;900"}}],M=false;var q=new URLSearchParams(location.search).get('style');var cur=P.find(function(x){return x.name===q})||P[0];var r=document.documentElement;
+if(q&&cur!==P[0]){var st=r.style;st.setProperty('--bg',cur.bg);st.setProperty('--surface',cur.surface);st.setProperty('--fg',cur.fg);st.setProperty('--accent',cur.accent);st.setProperty('--accent-2',cur.accent2);
+if(M){st.setProperty('--bg-2',cur.bg2||cur.card);st.setProperty('--radius',cur.radius+'px');st.setProperty('--font-display',cur.fonts.d);st.setProperty('--font-body',cur.fonts.s);var h=cur.fg.replace('#','');var rr=parseInt(h.slice(0,2),16),gg=parseInt(h.slice(2,4),16),bb=parseInt(h.slice(4,6),16);st.setProperty('--muted','rgba('+rr+','+gg+','+bb+',.66)');st.setProperty('--line','rgba('+rr+','+gg+','+bb+',.12)');r.classList.toggle('theme-light',cur.scheme==='light');}
+else{st.setProperty('--card',cur.card);st.setProperty('--r-lg',cur.radius+'px');st.setProperty('--d',cur.fonts.d);st.setProperty('--s',cur.fonts.s);}
+if(cur.upper)r.classList.add('is-upper');
+var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?'+cur.fonts.g+'&display=swap';document.head.appendChild(l);
+document.querySelectorAll('[data-fx]').forEach(function(c){c.dataset.c1=cur.accent;c.dataset.c2=cur.accent2;c.dataset.bg=cur.bg});document.querySelectorAll('[data-bottle]').forEach(function(c){c.dataset.bg=cur.bg});document.querySelectorAll('[data-backdrop]').forEach(function(c){c.dataset.c1=cur.accent;c.dataset.c2=cur.accent2;c.dataset.bg=cur.bg});}
+var w=document.createElement('div');w.className='ssw';w.innerHTML='<div class="ssw__menu">'+P.map(function(x){var u=new URL(location.href);u.searchParams.set('style',x.name);return '<a href="'+u.pathname+u.search+location.hash+'" class="'+(x===cur?'is-on':'')+'" style="--a:'+x.accent+';--b:'+x.bg+';--c:'+x.fg+'"><i></i><span>'+x.name+'<small>'+x.font.replace('inter','Inter').replace('lora','Lora serif').replace('poppins','Poppins').replace('sora','Sora').replace('plexmono','Plex Mono')+(x.upper?' · caps':'')+'</small></span></a>'}).join('')+'</div><button class="ssw__btn" type="button"><i style="background:'+cur.accent+'"></i>Style: '+cur.name+' <span style="opacity:.6">('+P.length+')</span></button>';
+w.querySelector('.ssw__btn').addEventListener('click',function(){w.classList.toggle('is-open')});document.body.appendChild(w);
+})();</script><!-- /styleswitch --></body></html>

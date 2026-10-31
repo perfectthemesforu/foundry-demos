@@ -1,0 +1,12 @@
+:root{--d:"Lora",Georgia,serif;--s:"Inter",system-ui,sans-serif}
+h1,h2,h3,.d{font-weight:500;letter-spacing:-.02em;line-height:1.02}h1{font-size:clamp(3rem,7.5vw,6.6rem);letter-spacing:-.025em;line-height:.98}
+.hero{min-height:100svh;display:grid;align-items:center}
+.hero__sub{font-family:var(--d);font-style:italic;font-size:1.3rem}
+.btn{border-radius:4px}.btn--accent{color:#14100E}
+.spec b,.test b{font-family:var(--d);font-weight:500;letter-spacing:-.02em}
+.card__media,.gal__main,.split__media,.note{box-shadow:inset 0 0 0 1px var(--rule)}
+.card:hover .card__media,.note:hover{box-shadow:inset 0 0 0 1px var(--accent),0 30px 60px -30px color-mix(in srgb,var(--accent) 55%,transparent)}
+.ticker{background:var(--surface);color:var(--fg);border-bottom:1px solid var(--rule)}.ticker__track i{color:var(--accent);opacity:1}
+.rvc h4{font-family:var(--d);font-weight:500}
+.hero__stage{filter:drop-shadow(0 20px 60px color-mix(in srgb,var(--accent) 45%,transparent))}
+.section-head h2{font-weight:500}

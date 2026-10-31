@@ -1,0 +1,4 @@
+:root{--d:"Lora",Georgia,serif;--s:"Inter",system-ui,sans-serif}
+h1,h2,h3{font-weight:500;letter-spacing:-.02em}.hero__sub{font-family:"Lora",Georgia,serif;font-style:italic}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1{font-weight:500;letter-spacing:-.03em}h2{font-weight:500}.hero__eyebrow{font-family:var(--s);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;color:var(--accent-2)}.ticker{background:var(--accent);color:var(--on-accent)}.ticker__track i{color:var(--accent-2)}.tl__step::before{background:var(--accent-2)}.fin{color:var(--fg)}.fin .btn{background:var(--accent);color:var(--on-accent)}.hero__fx canvas{opacity:.5}.note__when{color:var(--accent-2)}

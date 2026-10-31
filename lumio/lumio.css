@@ -1,0 +1,3 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1,h2,h3{letter-spacing:-.04em;font-weight:800}.card,.bento__cell,.rvc,.rv__sum,.trustrow>div,.acc details,.tier,.box div{background:color-mix(in srgb,var(--card) 60%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--fg) 10%,transparent),0 30px 60px -40px rgba(27,31,58,.35)}.btn{border-radius:999px}.btn--accent{box-shadow:0 14px 40px -14px var(--accent)}.hero__fx canvas{opacity:.85}.fin{background:transparent}

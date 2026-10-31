@@ -1,0 +1,3 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1,h2,h3{letter-spacing:-.04em;font-weight:800}.hero__fx canvas{opacity:.6}.spec b{color:var(--accent)}.tl__step::before{background:var(--accent)}

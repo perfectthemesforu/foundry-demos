@@ -1,0 +1,8 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+.card__media,.gal__main,.split__media{box-shadow:0 0 0 1px var(--rule),0 40px 80px -40px rgba(0,0,0,.8)}
+.ticker{background:var(--surface);color:var(--fg);border-bottom:1px solid var(--rule)}.ticker__track i{color:var(--accent);opacity:1}
+.fin{background:var(--bg)}
+h1,h2{text-transform:uppercase;letter-spacing:-.02em}.btn{text-transform:uppercase;letter-spacing:.06em;font-size:.85rem}
+:root{--mono:"IBM Plex Mono","DejaVu Sans Mono",ui-monospace,monospace}
+h1{font-size:clamp(3rem,8.5vw,8rem);line-height:.9}.hero__eyebrow{font-family:var(--mono);letter-spacing:.14em;color:var(--accent)}.btn--accent{color:var(--on-accent)}.card__badge,.offer__badge{background:var(--accent-2);color:#fff}.ticker{background:var(--accent);color:var(--on-accent)}.ticker__track i{color:var(--on-accent)}.hero__fx canvas{opacity:.5}.fin{background:var(--bg)}.offer--hot{box-shadow:inset 0 0 0 2px var(--accent-2)}.offer:has(input:checked) .offer__dot{box-shadow:inset 0 0 0 6px var(--accent-2)}.spec b{color:var(--fg)}

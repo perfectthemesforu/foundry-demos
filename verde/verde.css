@@ -1,0 +1,3 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1,h2,h3{letter-spacing:-.04em}.btn--accent{box-shadow:0 10px 30px -12px var(--accent)}

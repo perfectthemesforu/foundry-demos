@@ -1,0 +1,3 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1,h2,h3{letter-spacing:-.04em;font-weight:700}.btn{border-radius:999px}.hero__eyebrow{color:var(--accent)}.trustrow>div{border-radius:999px}.ticker{background:var(--accent);color:#fff}.ticker__track i{color:var(--accent-2)}.fin{background:var(--accent);color:#fff}.fin .btn{background:#fff;color:var(--accent)}.cat{aspect-ratio:1}.hero__fx canvas{opacity:.7}

@@ -1,0 +1,4 @@
+:root{--d:"Lora",Georgia,serif;--s:"Inter",system-ui,sans-serif}
+h1,h2,h3{font-weight:500;letter-spacing:-.02em}.hero__sub{font-family:"Lora",Georgia,serif;font-style:italic}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+.hero__eyebrow{color:var(--accent)}.cat>span{font-family:"Lora",Georgia,serif;font-weight:500}.card__title{font-family:"Lora",Georgia,serif}.hero__fx canvas{opacity:.5}

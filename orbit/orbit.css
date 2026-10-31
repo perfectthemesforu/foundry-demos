@@ -1,0 +1,7 @@
+:root{--d:"Lora",Georgia,serif;--s:"Inter",system-ui,sans-serif}
+h1,h2,h3{font-weight:500;letter-spacing:-.02em}.hero__sub{font-family:"Lora",Georgia,serif;font-style:italic}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+.card__media,.gal__main,.split__media{box-shadow:0 0 0 1px var(--rule),0 40px 80px -40px rgba(0,0,0,.8)}
+.ticker{background:var(--surface);color:var(--fg);border-bottom:1px solid var(--rule)}.ticker__track i{color:var(--accent);opacity:1}
+.fin{background:var(--bg)}
+.hero--center h1{font-size:clamp(3rem,9vw,8rem);font-weight:400;letter-spacing:-.03em}.hero--center h1 em{font-style:italic;color:var(--accent-2)}.mq__track{font-family:"Lora",Georgia,serif;font-weight:400;font-style:italic}.press span{font-family:"Lora",Georgia,serif;font-weight:500}.scrolly__step h3{font-weight:400}

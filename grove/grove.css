@@ -1,0 +1,3 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+h1,h2,h3{letter-spacing:-.04em;font-weight:800}.btn{border-radius:999px}.hero__stage{border-radius:62% 38% 46% 54%/55% 48% 52% 45%;background:var(--surface);animation:blobMorph 14s ease-in-out infinite alternate}.hero__fx canvas{opacity:.8}.card__media,.bento__cell,.hpanel,.scrolly__media{border-radius:40px}.ugc a:nth-child(3n) img{border-radius:40%}.trustrow>div{border-radius:999px}.fin{background:var(--accent);color:#fff}.fin .btn{background:#fff;color:var(--accent)}.ticker{background:var(--accent);color:#fff}.ticker__track i{color:var(--accent-2)}

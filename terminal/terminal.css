@@ -1,0 +1,7 @@
+:root{--d:"Inter Display","Inter",system-ui,sans-serif;--s:"Inter",system-ui,sans-serif}
+.hero{min-height:100svh;display:grid;align-items:center}.hero__in{min-height:auto}
+.card__media,.gal__main,.split__media{box-shadow:0 0 0 1px var(--rule),0 40px 80px -40px rgba(0,0,0,.8)}
+.ticker{background:var(--surface);color:var(--fg);border-bottom:1px solid var(--rule)}.ticker__track i{color:var(--accent);opacity:1}
+.fin{background:var(--bg)}
+:root{--mono:"IBM Plex Mono","DejaVu Sans Mono",ui-monospace,monospace}
+h1,h2,h3{font-family:var(--mono);letter-spacing:-.03em;font-weight:600}h1{font-size:clamp(2.4rem,6vw,5.4rem)}body{font-family:var(--mono)}.btn{border-radius:4px;font-family:var(--mono)}.hero__eyebrow{font-family:var(--mono);color:var(--accent)}.hero__eyebrow::before{content:"> "}.hero__sub{font-size:1rem}.spec b{font-family:var(--mono);color:var(--accent)}.card__media{border:1px solid var(--rule)}.ticker{background:var(--accent);color:var(--bg);font-family:var(--mono)}.ticker__track i{color:var(--bg)}.section-head h2::before{content:"## ";color:var(--accent)}.fin{background:var(--bg)}body{background-image:linear-gradient(90deg,var(--rule) 1px,transparent 1px),linear-gradient(var(--rule) 1px,transparent 1px);background-size:48px 48px;background-attachment:fixed}.hero__fx canvas{opacity:.5}
